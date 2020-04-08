@@ -1,0 +1,4 @@
+#! /bin/bash
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/printer -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray -dNOPAUSE -dBATCH -sOutputFile=$2 $1
+

@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+import random, sys, os
+from PyPDF2 import PdfFileWriter, PdfFileReader
+
+
+if len(sys.argv) < 4:
+    print("This is for creating pdfs of double sided page documents.")
+    print("It is used with a scanner with only a single sided document feeder.")
+    print("* Feed the pages one way")
+    print("* Then take the stack and flip it")
+    print("* Feed the pages through again.")
+    print("* Use this tool to join the two pdfs into a single document.")
+    print("\nArguments:")
+    print("args: <pdf1> <pdf2> <pdf out>")
+    sys.exit(-1)
+
+if not os.path.exists(sys.argv[1]):
+    print("PDF1 '%s' not found." % sys.argv[1])
+    sys.exit(-1)
+
+if not os.path.exists(sys.argv[2]):
+    print("PDF2 '%s' not found." % sys.argv[2])
+    sys.exit(-1)
+
+pdf1 = PdfFileReader(open(sys.argv[1], 'rb'))
+pdf2 = PdfFileReader(open(sys.argv[2], 'rb'))
+
+page_count = pdf1.getNumPages()
+
+if page_count != pdf2.getNumPages() :
+    print("PDFs have different page counts.")
+    sys.exit(-1)
+
+output = PdfFileWriter()
+
+for i in range(0, page_count):
+    output.addPage(pdf1.getPage(i))
+    output.addPage(pdf2.getPage(page_count-1-i))
+
+output.write(open(sys.argv[3], 'wb'))
