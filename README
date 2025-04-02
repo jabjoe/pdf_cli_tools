@@ -3,6 +3,6 @@ This is just a butch of scripts I tend to use with PDFs from scanners.
 Figured others might want them, or use them as a basis for their own.
 
 * pdf_interweave - Work round for scanning double sided stack of paper with single sided scanner.
-* pdf_shrink - Just shrink the PDF to 300 dpi
-* pdf_shrink_grey - Shrink it to 300 dpi and make it grey scale (smaller still)
-* pdf_shrink_more - Just shrink the PDF to 150 dpi
+* pdf_shrink_to_printer - Just shrink the PDF to 300 dpi
+* pdf_shrink_to_bw_printer- Shrink it to 300 dpi and make it grey scale (smaller still)
+* pdf_shrink_to_ebook - Just shrink the PDF to 150 dpi
